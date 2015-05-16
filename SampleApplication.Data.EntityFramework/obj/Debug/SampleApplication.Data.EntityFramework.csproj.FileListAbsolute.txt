@@ -1,0 +1,13 @@
+c:\users\ask\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Data.EntityFramework\bin\Debug\SampleApplication.Data.EntityFramework.dll.config
+c:\users\ask\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Data.EntityFramework\bin\Debug\SampleApplication.Data.EntityFramework.dll
+c:\users\ask\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Data.EntityFramework\bin\Debug\SampleApplication.Data.EntityFramework.pdb
+c:\users\ask\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Data.EntityFramework\bin\Debug\EntityFramework.dll
+c:\users\ask\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Data.EntityFramework\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\ask\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Data.EntityFramework\bin\Debug\SampleApplication.Domain.dll
+c:\users\ask\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Data.EntityFramework\bin\Debug\SampleApplication.Domain.pdb
+c:\users\ask\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Data.EntityFramework\bin\Debug\EntityFramework.xml
+c:\users\ask\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Data.EntityFramework\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\ask\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Data.EntityFramework\obj\Debug\SampleApplication.Data.EntityFramework.csprojResolveAssemblyReference.cache
+c:\users\ask\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Data.EntityFramework\obj\Debug\SampleApplication.Data.EntityFramework.dll
+c:\users\ask\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Data.EntityFramework\obj\Debug\SampleApplication.Data.EntityFramework.pdb
+C:\Users\ASK\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Data.EntityFramework\bin\Debug\LinqKit.dll
