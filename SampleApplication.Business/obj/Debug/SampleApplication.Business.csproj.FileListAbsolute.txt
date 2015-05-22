@@ -1,5 +1,0 @@
-C:\Users\ASK\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Business\bin\Debug\SampleApplication.Business.dll
-C:\Users\ASK\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Business\bin\Debug\SampleApplication.Business.pdb
-C:\Users\ASK\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Business\obj\Debug\SampleApplication.Business.csprojResolveAssemblyReference.cache
-C:\Users\ASK\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Business\obj\Debug\SampleApplication.Business.dll
-C:\Users\ASK\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Business\obj\Debug\SampleApplication.Business.pdb
