@@ -9,9 +9,10 @@ namespace SampleApplication.Domain.Repositories
 {
     public interface IPaymentRepository:IRepository<Payment>
     {
-        List<Payment> GetPaymetListByClient(int clientId);
-        Task<List<Payment>> GetPaymetListByClientAsync(int clientId);
-        List<Payment> GetPaymetListByInvoice(int invoiceId);
-        Task<List<Payment>> GetPaymetListByInvoiceAsync(int invoiceId);
+        void Remove(int paymentId);
+        List<Payment> GetPaymentListByClient(int clientId);
+        Task<List<Payment>> GetPaymentListByClientAsync(int clientId);
+        List<Payment> GetPaymentListByInvoice(int invoiceId);
+        Task<List<Payment>> GetPaymentListByInvoiceAsync(int invoiceId);
     }
 }

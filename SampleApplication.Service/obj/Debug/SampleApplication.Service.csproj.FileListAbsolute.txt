@@ -10,3 +10,15 @@ C:\Users\ASK\documents\visual studio 2013\Projects\SampleApplication\SampleAppli
 C:\Users\ASK\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Service\obj\Debug\SampleApplication.Service.dll
 C:\Users\ASK\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Service\obj\Debug\SampleApplication.Service.pdb
 C:\Users\ASK\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Service\bin\Debug\LinqKit.dll
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Service\bin\Debug\SampleApplication.Service.dll
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Service\bin\Debug\SampleApplication.Service.pdb
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Service\bin\Debug\SampleApplication.Data.EntityFramework.dll
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Service\bin\Debug\SampleApplication.Domain.dll
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Service\bin\Debug\EntityFramework.dll
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Service\bin\Debug\LinqKit.dll
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Service\bin\Debug\SampleApplication.Data.EntityFramework.pdb
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Service\bin\Debug\SampleApplication.Domain.pdb
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Service\bin\Debug\EntityFramework.xml
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Service\obj\Debug\SampleApplication.Service.csprojResolveAssemblyReference.cache
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Service\obj\Debug\SampleApplication.Service.dll
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Service\obj\Debug\SampleApplication.Service.pdb

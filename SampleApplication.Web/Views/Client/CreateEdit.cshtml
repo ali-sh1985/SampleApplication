@@ -1,0 +1,98 @@
+﻿@using SampleApplication.Domain.Enums
+@{
+    Layout = null;
+}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">ADD/EDIT CLIENT</h3>
+    </div>
+    <div class="panel-body">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form class="form-horizontal" name="clientForm" novalidate>
+                    <fieldset>
+                        <div class="form-group" show-errors='{ showSuccess: true }'>
+                            <label for="inputName" class="col-lg-2 control-label">Name:</label>
+                            <div class="col-lg-2">
+                                <input type="text" name="name" class="form-control  input-sm" id="inputName" ng-model="client.Name" required>
+                            </div>
+                            <div class="col-lg-5">
+                                <span class="help-block input-sm" ng-if="clientForm.name.$error.required">The client's name is required</span>
+                            </div>
+                        </div>
+                        <div class="form-group" show-errors='{ showSuccess: true }'>
+                            <label for="inputCompany" class="col-lg-2 control-label">Company No:</label>
+                            <div class="col-lg-2">
+                                <input type="text" name="company" class="form-control  input-sm" id="inputCompany" ng-model="client.Company" required>
+                            </div>
+                            <div class="col-lg-5">
+                                <span class="help-block input-sm" ng-if="clientForm.company.$error.required">The company's number is required</span>
+                            </div>
+                        </div>
+                        <div class="form-group" show-errors='{ showSuccess: true }'>
+                            <label for="inputAddressLineOne" class="col-lg-2 control-label">Address line 1:</label>
+                            <div class="col-lg-2">
+                                <input type="text" name="addressLineOne" class="form-control  input-sm" id="inputAddressLineOne" ng-model="client.AddressLine1" required>
+                            </div>
+                            <div class="col-lg-5">
+                                <span class="help-block input-sm" ng-if="clientForm.addressLineOne.$error.required">The addressLineOne is required</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputAddressLineTwo" class="col-lg-2 control-label">Address line 2:</label>
+                            <div class="col-lg-2">
+                                <input type="text" name="addressLineTwo" class="form-control  input-sm" id="inputAddressLineTwo" ng-model="client.AddressLine2">
+                            </div>
+                        </div>
+                        <div class="form-group" show-errors='{ showSuccess: true }'>
+                            <label for="inputTown" class="col-lg-2 control-label">Town:</label>
+                            <div class="col-lg-2">
+                                <input type="text" name="town" class="form-control  input-sm" id="inputTown" ng-model="client.Town" required>
+                            </div>
+                            <div class="col-lg-5">
+                                <span class="help-block input-sm" ng-if="clientForm.town.$error.required">The town's name is required</span>
+                            </div>
+                        </div>
+                        <div class="form-group" show-errors='{ showSuccess: true }'>
+                            <label for="inputPostcode" class="col-lg-2 control-label">Postcode:</label>
+                            <div class="col-lg-2">
+                                <input type="text" name="postcode" class="form-control  input-sm" id="inputPostcode" ng-model="client.Postcode" required>
+                            </div>
+                            <div class="col-lg-5">
+                                <span class="help-block input-sm" ng-if="clientForm.town.$error.required">The post code is required</span>
+                            </div>
+                        </div>
+                        <div class="form-group" show-errors='{ showSuccess: true }'>
+                            <label for="inputCountry" class="col-lg-2 control-label">Country:</label>
+                            <div class="col-lg-2">
+                                @Html.DropDownList("CountriesList", ViewBag.CountriesList as SelectList, "Select Country", new { ng_required = "!client.Country", ng_model = "client.Country", @class = "form-control input-sm" })
+                            </div>
+                            <div class="col-lg-5">
+                                <span class="help-block input-sm" ng-if="clientForm.ListOfCountries.$error.required">Select a country</span>
+                            </div>
+                        </div>
+                        <div class="form-group" show-errors='{ showSuccess: true }'>
+                            <label for="inputCurrency" class="col-lg-2 control-label">Default invoice currency:</label>
+                            <div class="col-lg-2">
+                                @Html.DropDownList("Currency", EnumHelper.GetSelectList(typeof(Currency)), "Select Currency", new { ng_required = "!client.DefaultCurrency", ng_model = "client.DefaultCurrency", @class = "form-control input-sm" })
+                            </div>
+                            <div class="col-lg-5">
+                                <span class="help-block input-sm" ng-if="clientForm.ListOfCurrencies.$error.required">Select a currency</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <button type="reset" class="btn btn-default" ng-click="cancel()">Cancel</button>
+                                <button type="submit" class="btn btn-primary" ng-click="save()">Save</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

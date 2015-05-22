@@ -16,22 +16,28 @@ namespace SampleApplication.Data.EntityFramework.Repositories
         {
         }
 
-        public List<Payment> GetPaymetListByClient(int clientId)
+        public void Remove(int paymentId)
+        {
+            var client = Set.Find(paymentId);
+            Remove(client);
+        }
+
+        public List<Payment> GetPaymentListByClient(int clientId)
         {
             return Set.Where(p => p.Invoice.ClientId == clientId).ToList();
         }
 
-        public Task<List<Payment>> GetPaymetListByClientAsync(int clientId)
+        public Task<List<Payment>> GetPaymentListByClientAsync(int clientId)
         {
             return Set.Where(p => p.Invoice.ClientId == clientId).ToListAsync();
         }
 
-        public List<Payment> GetPaymetListByInvoice(int invoiceId)
+        public List<Payment> GetPaymentListByInvoice(int invoiceId)
         {
             return Set.Where(p => p.Invoice.InvoiceId == invoiceId).ToList();
         }
 
-        public Task<List<Payment>> GetPaymetListByInvoiceAsync(int invoiceId)
+        public Task<List<Payment>> GetPaymentListByInvoiceAsync(int invoiceId)
         {
             return Set.Where(p => p.Invoice.InvoiceId == invoiceId).ToListAsync();
         }

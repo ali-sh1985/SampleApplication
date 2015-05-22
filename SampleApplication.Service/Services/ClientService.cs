@@ -13,15 +13,50 @@ using SampleApplication.Service.SearchCriterias;
 
 namespace SampleApplication.Service.Services
 {
-    public class ClientService
+    public interface IClientService : IService<Client>
     {
-        private IClientRepository _clientRepository;
-        public ClientService(IUnitOfWork unitOfWork)
+        void Remove(int clientId);
+        decimal GetBalance(int clientId);
+        decimal GetTotalInvoices(int clientId);
+        decimal GetTotalPayments(int clientId);
+        List<Client> Search(ClientSearchCriteria searchCriteria, Paging paging, Sort sorting);
+    }
+    public class ClientService : Service<Client>, IClientService
+    {
+        public ClientService(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
-            _clientRepository = unitOfWork.ClientRepository;
+
         }
 
-        public List<Client> SelectClient(ClientSearchCriteria searchCriteria, Paging paging, Sort sorting = null)
+        public override void Add(Client client)
+        {
+            _unitOfWork.ClientRepository.Add(client);
+            _unitOfWork.SaveChanges();
+        }
+
+        public override void Update(Client client)
+        {
+            _unitOfWork.ClientRepository.Update(client);
+            _unitOfWork.SaveChanges();
+        }
+
+        public override void Remove(Client client)
+        {
+            _unitOfWork.ClientRepository.Remove(client);
+            _unitOfWork.SaveChanges();
+        }
+
+        public override Client Find(object id)
+        {
+            return _unitOfWork.ClientRepository.FindById(id);
+        }
+
+        public override List<Client> GetAll()
+        {
+            return _unitOfWork.ClientRepository.GetAll();
+        }
+
+        public List<Client> Search(ClientSearchCriteria searchCriteria, Paging paging, Sort sorting)
         {
             var predicate = PredicateBuilder.True<Client>();
 
@@ -60,9 +95,40 @@ namespace SampleApplication.Service.Services
                 predicate = predicate.And(x => x.InvoiceList.Sum(i => i.PaymentList.Sum(p => p.Total)) <= searchCriteria.PaymentTo);
             }
 
-            var orderBy = sorting == null? null: sorting.GetOrderBy<Client>();
+            
+            if (sorting == null)
+            {
+                sorting = new Sort("ClientId");
+            }
+            if (String.IsNullOrWhiteSpace(sorting.ColumnName))
+            {
+                sorting = new Sort("ClientId", sorting.ColumnOrder == Order.Ascending ? "ASC" : "DESC");
+            }
 
-            return _clientRepository.GetAll(predicate, orderBy, paging.PageSize * paging.PageIndex, paging.PageIndex);
+            var orderBy = sorting.GetOrderBy<Client>();
+
+            return _unitOfWork.ClientRepository.GetAll(predicate, orderBy, paging.PageSize * paging.PageIndex, paging.PageSize);
+        }
+
+        public void Remove(int clientId)
+        {
+            _unitOfWork.ClientRepository.Remove(clientId);
+            _unitOfWork.SaveChanges();
+        }
+
+        public decimal GetBalance(int clientId)
+        {
+            return _unitOfWork.ClientRepository.GetBalance(clientId);
+        }
+
+        public decimal GetTotalInvoices(int clientId)
+        {
+            return _unitOfWork.ClientRepository.GetTotalInvoices(clientId);
+        }
+
+        public decimal GetTotalPayments(int clientId)
+        {
+            return _unitOfWork.ClientRepository.GetTotalPayments(clientId);
         }
     }
 }

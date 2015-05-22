@@ -4,9 +4,7 @@ using System.Linq;
 using System.Web.Http;
 using System.Net.Http.Formatting;
 using Newtonsoft.Json.Serialization;
-using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
-using Newtonsoft.Json.Serialization;
 
 namespace SampleApplication.Web
 {

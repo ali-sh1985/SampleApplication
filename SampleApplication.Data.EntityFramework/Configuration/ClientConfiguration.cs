@@ -23,14 +23,14 @@ namespace SampleApplication.Data.EntityFramework.Configuration
                 .HasMaxLength(250)
                 .IsRequired();
 
-            Property(x => x.Town)
-                .HasColumnName("Town")
-                .HasColumnType("nvarchar")
-                .HasMaxLength(250)
-                .IsRequired();
-
             Property(x => x.Country)
                 .HasColumnName("Country")
+                .HasColumnType("nvarchar")
+                .HasMaxLength(50)
+                .IsRequired();
+
+            Property(x => x.Town)
+                .HasColumnName("Town")
                 .HasColumnType("nvarchar")
                 .HasMaxLength(250)
                 .IsRequired();
@@ -52,6 +52,12 @@ namespace SampleApplication.Data.EntityFramework.Configuration
                 .HasColumnType("nvarchar")
                 .HasMaxLength(15)
                 .IsRequired();
+
+            Ignore(x => x.TotalInvoiced);
+
+            Ignore(x => x.TotalPaid);
+
+            Ignore(x => x.Balance);
 
             HasMany(x => x.InvoiceList)
                 .WithRequired(x => x.Client)

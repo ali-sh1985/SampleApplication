@@ -1,6 +1,18 @@
 ﻿@{
     Layout = null;
 }
+<script type="text/ng-template" id="deleteModalContent.html">
+    <div class="modal-header">
+        <h4 class="modal-title">Confirm</h4>
+    </div>
+    <div class="modal-body">
+       <strong>Delete this item: </strong> {{client.name}}
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h3 class="panel-title">CLIENTS</h3>
@@ -10,63 +22,96 @@
             <div class="panel-body">
                 <form class="form-horizontal">
                     <fieldset>
-
                         <div class="form-group">
                             <label for="inputFind" class="col-lg-2 control-label">Find:</label>
                             <div class="col-lg-2">
-                                <input type="text" class="form-control" id="inputFind" ng-model="inputFind">
+                                <input type="text" class="form-control input-sm" id="inputFind" ng-model="filter.inputFind">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputInvoicedFrom" class="col-lg-2 control-label">Invoiced:</label>
                             <div class="col-lg-2">
-                                <input type="number" class="form-control" id="inputInvoicedFrom" ng-model="inputInvoicedFrom">
+                                <input type="number" class="form-control input-sm" id="inputInvoicedFrom" ng-model="filter.inputInvoicedFrom">
                             </div>
                             <label for="inputInvoicedTo" class="col-lg-1 control-label">To</label>
                             <div class="col-lg-2">
-                                <input type="number" class="form-control" id="inputInvoicedTo" ng-model="inputInvoicedTo">
+                                <input type="number" class="form-control input-sm" id="inputInvoicedTo" ng-model="filter.inputInvoicedTo">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="inputTotalPaidFrom" class="col-lg-2 control-label">Total Paid:</label>
                             <div class="col-lg-2">
-                                <input type="number" class="form-control" id="inputTotalPaidFrom" ng-model="inputTotalPaidFrom">
+                                <input type="number" class="form-control input-sm" id="inputTotalPaidFrom" ng-model="filter.inputTotalPaidFrom">
                             </div>
                             <label for="inputTotalPaidTo" class="col-lg-1 control-label">To</label>
                             <div class="col-lg-2">
-                                <input type="number" class="form-control" id="inputTotalPaidTo" ng-model="inputTotalPaidTo">
+                                <input type="number" class="form-control input-sm" id="inputTotalPaidTo" ng-model="filter.inputTotalPaidTo">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="inputBalanceFrom" class="col-lg-2 control-label">Balance:</label>
                             <div class="col-lg-2">
-                                <input type="number" class="form-control" id="inputBalanceFrom" ng-model="inputBalanceFrom">
+                                <input type="number" class="form-control input-sm" id="inputBalanceFrom" ng-model="filter.inputBalanceFrom">
                             </div>
                             <label for="inputBalanceTo" class="col-lg-1 control-label">To</label>
                             <div class="col-lg-2">
-                                <input type="number" class="form-control" id="inputBalanceTo" ng-model="inputBalanceTo">
+                                <input type="number" class="form-control input-sm" id="inputBalanceTo" ng-model="filter.inputBalanceTo">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputDisplayCurrency" class="col-lg-2 control-label">Display Currency:</label>
                             <div class="col-lg-2">
-                                <select class="form-control" id="inputDisplayCurrency" ng-options="currency for currency in currencies" ng-model="inputCurrency"></select>
+                                <select class="form-control input-sm" id="inputDisplayCurrency" ng-options="currency for currency in currencies" ng-model="filter.inputCurrency"></select>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-lg-10 col-lg-offset-2">
                                 <button type="reset" class="btn btn-default" ng-click="resetForm()">Clear</button>
-                                <button type="submit" class="btn btn-primary" ng-click="searchClient()">Search</button>
+                                <button type="submit" class="btn btn-primary" ng-click="filterClients()">Search</button>
                             </div>
                         </div>
                     </fieldset>
                 </form>
             </div>
         </div>
-        <div id="grid1" ui-grid="{ data: clientsData }" class="grid"></div>
+        <table st-table="clientCollection" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Total invoiced</th>
+                    <th>Total paid</th>
+                    <th>Balance</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in clientCollection">
+                    <td><a id="clientBtn" href="#/clients/detail/{{row.clientId}}">{{row.name}}</a></td>
+                    <td>{{row.totalInvoiced}}</td>
+                    <td>{{row.totalPaid}}</td>
+                    <td>{{row.balance }}</td>
+                    <td>
+                        <a href="#/clients/edit/{{row.clientId}}" class="btn btn-sm btn-warning">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <button type="button" ng-click="removeClient(row)" class="btn btn-sm btn-danger">
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="form-group pull-right">
+            <div class="col-lg-10">
+                <a href="#/clients/create" class="btn btn-primary" ng-click="searchClient()">Add New</a>
+            </div>
+        </div>
     </div>
 </div>
 

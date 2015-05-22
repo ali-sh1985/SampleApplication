@@ -22,6 +22,14 @@ namespace SampleApplication.Data.EntityFramework.Configuration
                 .HasColumnType("datetime")
                 .IsRequired();
 
+            Ignore(x => x.Total);
+
+            Ignore(x => x.Net);
+
+            Ignore(x => x.Tax);
+
+            Ignore(x => x.Description);
+
             HasRequired(x => x.Client)
                 .WithMany(x => x.InvoiceList)
                 .HasForeignKey(x => x.ClientId);

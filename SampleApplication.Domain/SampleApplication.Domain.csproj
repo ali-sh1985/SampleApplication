@@ -47,6 +47,7 @@
     <Compile Include="Entities\Payment.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Enums\Currency.cs" />
     <Compile Include="Enums\PaymentMethod.cs" />
     <Compile Include="IUnitOfWOrk.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -2,3 +2,8 @@ c:\users\ask\documents\visual studio 2013\Projects\SampleApplication\SampleAppli
 c:\users\ask\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Domain\bin\Debug\SampleApplication.Domain.pdb
 c:\users\ask\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Domain\obj\Debug\SampleApplication.Domain.dll
 c:\users\ask\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Domain\obj\Debug\SampleApplication.Domain.pdb
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Domain\bin\Debug\SampleApplication.Domain.dll
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Domain\bin\Debug\SampleApplication.Domain.pdb
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Domain\obj\Debug\SampleApplication.Domain.dll
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Domain\obj\Debug\SampleApplication.Domain.pdb
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Domain\obj\Debug\SampleApplication.Domain.csprojResolveAssemblyReference.cache

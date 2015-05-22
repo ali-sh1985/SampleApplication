@@ -13,8 +13,14 @@ namespace SampleApplication.Service.Common
     }
     public class Sort
     {
-        
-        public string ColumnName { get; set; }
-        public Order ColumnOrder { get; set; }
+        public Sort(string columnName, string order = null)
+        {
+            ColumnName = columnName;
+            ColumnOrder = !String.IsNullOrWhiteSpace(order) && order.Trim().ToUpper() == "DESC" ? Order.Descending : Order.Ascending;
+        }
+
+        public string ColumnName { get; private set; }
+
+        public Order ColumnOrder { get; private set; }
     }
 }

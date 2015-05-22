@@ -1,0 +1,54 @@
+﻿@{
+    Layout = null;
+}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">PAYMENTS</h3>
+    </div>
+    <div class="panel-body">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="inputFind" class="col-lg-2 control-label">Find:</label>
+                            <div class="col-lg-2">
+                                <input type="text" class="form-control" id="inputFind" ng-model="inputFind">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <table st-table="paymentCollection" class="table table-striped table-condensed table-bordered">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Client</th>
+                    <th>Total</th>
+                    <th>Description</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in paymentCollection">
+                    <td>{{row.Date | jsonDate}}</td>
+                    <td>{{row.Client}}</td>
+                    <td>{{row.total}}</td>
+                    <td>{{row.Total }}</td>
+                    <td>
+                        <button type="button" ng-click="removeRow(row)" class="btn btn-sm btn-warning">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" ng-click="removeRow(row)" class="btn btn-sm btn-danger">
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

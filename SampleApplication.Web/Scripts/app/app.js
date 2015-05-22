@@ -1,4 +1,4 @@
-var app = angular.module('mainApp', ['ngRoute', 'ui.grid','LocalStorageModule', 'mainApp.controllers', 'mainApp.services']);
+var app = angular.module('mainApp', ['ngRoute', 'ui.bootstrap', 'smart-table', 'highcharts-ng', 'LocalStorageModule', 'mainApp.controllers', 'mainApp.services', 'mainApp.directives', 'mainApp.filters']);
 
 app.config(function($routeProvider) {
     $routeProvider
@@ -7,6 +7,18 @@ app.config(function($routeProvider) {
             templateUrl: 'Client',
             controller: 'clientController'
         })
+        .when('/clients/create/', {
+            templateUrl: 'Client/CreateEdit',
+            controller: 'clientCreateEditController'
+        })
+        .when('/clients/edit/:id', {
+            templateUrl: function (params) { return 'Client/CreateEdit/' + params.id; },
+            controller: 'clientCreateEditController'
+        })
+        .when('/clients/detail/:id', {
+            templateUrl: function (params) { return 'Client/Detail/' + params.id; },
+            controller: 'clientDetailController'
+        })
         // route for the Invoices page
         .when('/invoices', {
             templateUrl: 'Invoice',
@@ -14,8 +26,18 @@ app.config(function($routeProvider) {
         })
         // route for the Payments page
         .when('/payments', {
-            templateUrl: 'Templates/payments.html',
+            templateUrl: 'Payment',
             controller: 'paymentController'
+        })
+        // route for the Payments page
+        .when('/payments/create', {
+            templateUrl: 'Payment/Create',
+            controller: 'paymentController'
+        })
+        // route for the Payments page
+        .when('/reports', {
+            templateUrl: 'Report',
+            controller: 'reportController'
         })
         .otherwise({
             redirectTo: '/clients'

@@ -11,10 +11,10 @@ namespace SampleApplication.Service.Common
         public int PageIndex { get; private set; }
         public int PageSize { get; private set; }
 
-        public Paging(int pageIndex, int pageSize)
+        public Paging(int? pageNumber, int? pageSize)
         {
-            PageIndex = pageIndex < 1 ? 0 : pageIndex - 1;
-            PageSize = pageSize;
+            PageIndex = !pageNumber.HasValue || pageNumber < 1 ? 0 : pageNumber.Value - 1;
+            PageSize = !pageSize.HasValue || pageSize < 1 ? 10 : pageSize.Value;
         }
     }
 }

@@ -15,6 +15,12 @@ namespace SampleApplication.Data.EntityFramework.Repositories
         {
         }
 
+        public void Remove(int clientId)
+        {
+            var client = Set.Find(clientId);
+            Remove(client);
+        }
+
         public decimal GetBalance(int clientId)
         {
             return GetTotalInvoices(clientId) - GetTotalPayments(clientId);
@@ -29,5 +35,6 @@ namespace SampleApplication.Data.EntityFramework.Repositories
         {
             return Set.Find(clientId).InvoiceList.Sum(i => i.PaymentList.Sum(p => p.Total));
         }
+
     }
 }

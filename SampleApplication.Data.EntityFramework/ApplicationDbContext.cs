@@ -2,6 +2,8 @@
 using SampleApplication.Data.EntityFramework.Configuration;
 using SampleApplication.Domain.Entities;
 using System.Data.Entity;
+using System.Globalization;
+using System.Linq;
 
 namespace SampleApplication.Data.EntityFramework
 {
@@ -10,6 +12,7 @@ namespace SampleApplication.Data.EntityFramework
         internal ApplicationDbContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
         {
+
         }
 
         internal IDbSet<User> Users { get; set; }
@@ -29,7 +32,7 @@ namespace SampleApplication.Data.EntityFramework
             modelBuilder.Configurations.Add(new InvoiceConfiguration());
             modelBuilder.Configurations.Add(new PaymentConfiguration());
             modelBuilder.Configurations.Add(new ItemConfiguration());
-            
+
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -1,1 +1,14 @@
-﻿
+﻿html {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+.form-group .help-block {
+  display: none;
+  margin: 0 !important;
+}
+ 
+.form-group.has-error .help-block {
+  display: block;
+  margin: 0 !important;
+}

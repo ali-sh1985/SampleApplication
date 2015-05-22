@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using SampleApplication.Domain.Entities;
 
 namespace SampleApplication.Service.Common
 {

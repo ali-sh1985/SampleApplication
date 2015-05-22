@@ -11,3 +11,16 @@ c:\users\ask\documents\visual studio 2013\Projects\SampleApplication\SampleAppli
 c:\users\ask\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Data.EntityFramework\obj\Debug\SampleApplication.Data.EntityFramework.dll
 c:\users\ask\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Data.EntityFramework\obj\Debug\SampleApplication.Data.EntityFramework.pdb
 C:\Users\ASK\documents\visual studio 2013\Projects\SampleApplication\SampleApplication.Data.EntityFramework\bin\Debug\LinqKit.dll
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Data.EntityFramework\bin\Debug\SampleApplication.Data.EntityFramework.dll.config
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Data.EntityFramework\bin\Debug\SampleApplication.Data.EntityFramework.dll
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Data.EntityFramework\bin\Debug\SampleApplication.Data.EntityFramework.pdb
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Data.EntityFramework\bin\Debug\EntityFramework.dll
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Data.EntityFramework\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Data.EntityFramework\bin\Debug\LinqKit.dll
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Data.EntityFramework\bin\Debug\SampleApplication.Domain.dll
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Data.EntityFramework\bin\Debug\SampleApplication.Domain.pdb
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Data.EntityFramework\bin\Debug\EntityFramework.xml
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Data.EntityFramework\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Data.EntityFramework\obj\Debug\SampleApplication.Data.EntityFramework.csprojResolveAssemblyReference.cache
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Data.EntityFramework\obj\Debug\SampleApplication.Data.EntityFramework.dll
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Data.EntityFramework\obj\Debug\SampleApplication.Data.EntityFramework.pdb
