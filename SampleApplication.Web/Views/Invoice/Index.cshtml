@@ -1,45 +1,205 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
+<script type="text/ng-template" id="addInvoiceModalContent.html">
+    <div class="modal-header">
+        <h4 class="modal-title">ADD/EDIT INVOICE</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <form class="form-horizontal" name="invoiceForm" novalidate>
+                    <div class="form-group" show-errors='{ showSuccess: true }'>
+                        <label for="inputInvoiceDate" class="col-lg-3 control-label">Invoice Date:</label>
+                        <div class="col-lg-4">
+                            <p class="input-group">
+                                <input type="text" name="inputDate" class="form-control input-sm" datepicker-popup="dd/MM/yyyy" is-open="opened" ng-model="invoice.Date" ng-required="true" close-text="Close" />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default input-sm" ng-click="openDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">ITEMS</h3>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Description</th>
+                                        <th class="col-sm-2">Net</th>
+                                        <th class="col-sm-2">Tax %</th>
+                                        <th class="col-sm-1">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="row in invoice.ItemList" ng-show="!row.IsDeleted">
+                                        <td><input type="text" name="inputDescription" class="form-control input-sm" id="inputDescription" ng-model="row.Description" required /></td>
+                                        <td><input type="text" name="inputNet" class="form-control input-sm" id="inputNet" ng-model="row.Net" required /></td>
+                                        <td><input type="text" name="inputTax" class="form-control input-sm" id="inputTax" ng-model="row.Tax" required /></td>
+                                        <td>
+                                            <button type="button" ng-click="removeItem(row)" class="btn btn-sm btn-danger">
+                                                <i class="glyphicon glyphicon-remove"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                            <div class="form-group pull-right">
+                                <p class="tpbutton btn-toolbar" style="text-align:center">
+                                    <button class="btn navbar-btn btn-primary" ng-click="addItem()" style=" margin-right: 14px; ">Add Item</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="save()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+<script type="text/ng-template" id="deleteModalContent.html">
+    <div class="modal-header">
+        <h4 class="modal-title">Confirm</h4>
+    </div>
+    <div class="modal-body">
+        <strong>Delete this item: </strong> #{{invoice.InvoiceId}}
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h3 class="panel-title">CLIENTS</h3>
+        <h3 class="panel-title">INVOICES</h3>
     </div>
     <div class="panel-body">
         <div class="panel panel-default">
             <div class="panel-body">
                 <form class="form-horizontal">
                     <fieldset>
-                        <legend>Legend</legend>
                         <div class="form-group">
                             <label for="inputFind" class="col-lg-2 control-label">Find:</label>
                             <div class="col-lg-2">
-                                <input type="text" class="form-control" id="inputFind" ng-model="inputFind">
+                                <input type="text" class="form-control input-sm" id="inputFind" ng-model="filter.inputFind">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputInvoicedId" class="col-lg-2 control-label">Invoiced#:</label>
+                            <label for="inputInvoice" class="col-lg-2 control-label">Invoice#:</label>
                             <div class="col-lg-2">
-                                <input type="number" class="form-control" id="inputInvoicedId" ng-model="inputInvoicedId">
+                                <input type="number" class="form-control input-sm" id="inputInvoice" ng-model="filter.inputInvoice">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputClient" class="col-lg-2 control-label">Client:</label>
                             <div class="col-lg-2">
-                                <select class="form-control" id="inputClient" ng-options="client for client in clientList" ng-model="inputclient"></select>
+                                <input type="text" id="inputClient" ng-model="filter.inputClientName" placeholder="Type client name" typeahead-on-select="setClientId($item)" typeahead="client.name for client in getClients($viewValue)" typeahead-loading="loadingLocations" class="form-control">
+                            </div>
+                            <span ng-show="isLoadingClient"><i class="fa fa-refresh fa-spin fa-fw"></i></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputTotalFrom" class="col-lg-2 control-label">Total:</label>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control input-sm" id="inputTotalFrom" ng-model="filter.inputTotalFrom">
+                            </div>
+                            <label for="inputTotalTo" class="col-lg-1 control-label">To</label>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control input-sm" id="inputTotalTo" ng-model="filter.inputTotalTo">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputNetFrom" class="col-lg-2 control-label">Net:</label>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control input-sm" id="inputNetFrom" ng-model="filter.inputNetFrom">
+                            </div>
+                            <label for="inputNetTo" class="col-lg-1 control-label">To</label>
+                            <div class="col-lg-2">
+                                <input type="number" class="form-control input-sm" id="inputNetTo" ng-model="filter.inputNetTo">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-lg-10 col-lg-offset-2">
                                 <button type="reset" class="btn btn-default" ng-click="resetForm()">Clear</button>
-                                <button type="submit" class="btn btn-primary" ng-click="searchClient()">Search</button>
+                                <button type="submit" class="btn btn-primary" ng-click="filterInvoices()">Search</button>
                             </div>
                         </div>
                     </fieldset>
                 </form>
             </div>
         </div>
-        <div id="grid1" ui-grid="{ data: invoicesData }" class="grid"></div>
+        <div class="btn-group pull-right" style="margin-bottom: 11px;" dropdown>
+            <button type="button" class="btn btn-primary">Page Size: {{pageSize}}</button>
+            <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+                <span class="caret"></span>
+                <span class="sr-only"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a ng-click="changePageSize(5)">5</a></li>
+                <li><a ng-click="changePageSize(10)">10</a></li>
+                <li><a ng-click="changePageSize(25)">25</a></li>
+                <li><a ng-click="changePageSize(50)">50</a></li>
+                <li><a ng-click="changePageSize(100)">100</a></li>
+            </ul>
+        </div>
+        <table st-table="invoiceCollection" class="table table-striped table-condensed table-bordered" st-pipe="filterInvoices">
+            <thead>
+            <tr>
+                <th class="col-sm-1" style=" width: 4%; ">#</th>
+                <th class="col-sm-1" st-sort="Name">Client</th>
+                <th class="col-sm-1">Invoice #</th>
+                <th class="col-sm-2">Total Amount</th>
+                <th class="col-sm-1">Tax</th>
+                <th class="col-sm-2">Net Amount</th>
+                <th class="col-sm-4">Description</th>
+                <th class="col-sm-1">Edit</th>
+                <th class="col-sm-1">Delete</th>
+            </tr>
+            </thead>
+            <tbody ng-show="isLoading">
+                <tr>
+                    <td colspan="9" class="text-center"><i class="fa fa-refresh fa-spin fa-2x fa-fw"></i></td>
+                </tr>
+            </tbody>
+            <tbody ng-show="!isLoading">
+            <tr ng-repeat="row in invoiceCollection">
+                <td>{{((currentPage-1)*pageSize)+($index + 1)}}</td>
+                <td>{{row.ClientName}}</td>
+                <td>#{{row.InvoiceId}}</td>
+                <td>{{row.CurrencySymbol}} {{row.Total}}</td>
+                <td>{{row.Tax}}</td>
+                <td>{{row.CurrencySymbol}} {{row.Net}}</td>
+                <td>{{row.Description}}</td>
+                <td>
+                    <button type="button" ng-click="openInvoiceForm(row)" class="btn btn-sm btn-warning">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </button>
+                </td>
+                <td>
+                    <button type="button" ng-click="removeInvoice(row)" class="btn btn-sm btn-danger">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="9" class="text-center">
+                        <pagination total-items="totalItems" ng-model="currentPage" max-size="5" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="pageSize" ng-change="filterInvoices()"></pagination>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
     </div>
 </div>
+
+
+

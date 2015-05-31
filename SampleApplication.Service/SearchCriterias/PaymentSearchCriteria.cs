@@ -8,5 +8,6 @@ namespace SampleApplication.Service.SearchCriterias
 {
     public class PaymentSearchCriteria
     {
+        public int? ClientId { get; set; }
     }
 }

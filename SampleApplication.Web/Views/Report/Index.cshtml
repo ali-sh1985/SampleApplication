@@ -11,30 +11,41 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <div class="form-group">
-                            <label class="checkbox-inline">
-                                <strong>Metrics:</strong>
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" value="">Invoices
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" value="">Payments
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <label class="checkbox-inline">
-                                <strong>Report:</strong>
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="optradio">Monthly (Last 2 years)
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="optradio">Quarterly (Last 3 years)
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="optradio">Annually (Last 4 years)
-                            </label>
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8 col-sm-8">
+                                <div class="form-group">
+                                    <label class="checkbox-inline">
+                                        <strong>Metrics:</strong>
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" ng-model="metrics.invoice.isChecked">Invoices
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" ng-model="metrics.payment.isChecked">Payments
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="checkbox-inline">
+                                        <strong>Report:</strong>
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="type" value="monthly" ng-model="reportType">Monthly (Last 2 years)
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="type" value="quarterly" ng-model="reportType">Quarterly (Last 3 years)
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="type" value="annually" ng-model="reportType">Annually (Last 4 years)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <div class="col-lg-10 col-lg-offset-2">
+                                        <button type="submit" class="btn btn-primary" ng-click="getReport()" ng-disabled="chartConfig.loading">Apply</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

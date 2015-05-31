@@ -20,6 +20,8 @@ namespace SampleApplication.Web
             container.RegisterType<IClientService, ClientService>(new HierarchicalLifetimeManager());
             container.RegisterType<IInvoiceService, InvoiceService>(new HierarchicalLifetimeManager());
             container.RegisterType<IPaymentService, PaymentService>(new HierarchicalLifetimeManager());
+            container.RegisterType<IChartService, ChartService>(new HierarchicalLifetimeManager());
+            container.RegisterType<ICurrencyService, CurrencyService>(new HierarchicalLifetimeManager());
             container.RegisterType<IUserStore<IdentityUser, Guid>, UserStore>(new TransientLifetimeManager());
             container.RegisterType<RoleStore>(new TransientLifetimeManager());
 

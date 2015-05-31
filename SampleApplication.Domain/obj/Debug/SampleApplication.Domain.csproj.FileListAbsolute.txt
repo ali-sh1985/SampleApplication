@@ -6,4 +6,3 @@ C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Domain\bin\Deb
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Domain\bin\Debug\SampleApplication.Domain.pdb
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Domain\obj\Debug\SampleApplication.Domain.dll
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Domain\obj\Debug\SampleApplication.Domain.pdb
-C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Domain\obj\Debug\SampleApplication.Domain.csprojResolveAssemblyReference.cache

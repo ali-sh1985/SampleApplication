@@ -10,7 +10,6 @@ namespace SampleApplication.Domain.Entities
         public string Name { get; set; }
         public string Company { get; set; }
         public string Town { get; set; }
-        public string CountryId { get; set; }
         public string Country { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }

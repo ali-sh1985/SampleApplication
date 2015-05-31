@@ -8,9 +8,9 @@ namespace SampleApplication.Domain.Enums
 {
     public enum  Currency
     {
-        USD=1,
-        GBP=2,
-        EURO=3,
+        GBP = 1,
+        USD=2,
+        EUR = 3,
         AUD=4,
         BRL=5
     }

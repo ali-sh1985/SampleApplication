@@ -3,12 +3,30 @@
     height: 100%;
     overflow-y: scroll;
 }
+
 .form-group .help-block {
-  display: none;
-  margin: 0 !important;
+    display: none;
+    margin: 0 !important;
 }
- 
+
 .form-group.has-error .help-block {
-  display: block;
-  margin: 0 !important;
+    display: block;
+    margin: 0 !important;
+}
+
+.st-sort-ascent:before {
+    content: '\25B2';
+}
+
+.st-sort-descent:before {
+    content: '\25BC';
+}
+
+.pagerInfo {
+    margin-top: 25px;
+    margin-right: -45px;
+}
+table thead {
+    background-color: #337AB7;
+    color: white;
 }

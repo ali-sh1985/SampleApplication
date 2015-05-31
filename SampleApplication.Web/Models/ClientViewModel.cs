@@ -25,6 +25,19 @@ namespace SampleApplication.Web.Models
 
     public class ClientFilterViewModel
     {
+        private string _sortColumn;
+        private string _order;
+        private int _pageNumber;
+        private int _pageSize;
+
+        public ClientFilterViewModel()
+        {
+            _sortColumn = "ClientId";
+            _order = "ASC";
+            _pageNumber = 1;
+            _pageSize = 10;
+        }
+
         public string Find { get; set; }
         public decimal? InvoiceFrom { get; set; }
         public decimal? InvoiceTo { get; set; }
@@ -32,6 +45,30 @@ namespace SampleApplication.Web.Models
         public decimal? TotalPaidTo { get; set; }
         public decimal? BalanceFrom { get; set; }
         public decimal? BalanceTo { get; set; }
-        public string DisplayCurrency { get; set; }
+        public Currency DisplayCurrency { get; set; }
+
+        public int PageSize
+        {
+            get { return _pageSize; }
+            set { _pageSize = value; }
+        }
+
+        public int PageNumber
+        {
+            get { return _pageNumber; }
+            set { _pageNumber = value; }
+        }
+
+        public string SortColumn
+        {
+            get { return _sortColumn; }
+            set { _sortColumn = value; }
+        }
+
+        public string Order
+        {
+            get { return _order; }
+            set { _order = value; }
+        }
     }
 }

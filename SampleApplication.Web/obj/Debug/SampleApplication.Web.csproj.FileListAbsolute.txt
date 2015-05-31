@@ -75,6 +75,8 @@ C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Sample
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\SampleApplication.Web.dll
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\SampleApplication.Web.pdb
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Antlr3.Runtime.dll
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Common.Logging.Core.dll
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Common.Logging.dll
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Microsoft.AspNet.Identity.Core.dll
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Microsoft.AspNet.Identity.Owin.dll
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Microsoft.Owin.dll
@@ -92,6 +94,7 @@ C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Micros
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Newtonsoft.Json.dll
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Owin.dll
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Quartz.dll
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\SampleApplication.Data.EntityFramework.dll
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\SampleApplication.Domain.dll
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\SampleApplication.Service.dll
@@ -110,10 +113,15 @@ C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Unity.
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\WebGrease.dll
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\EntityFramework.dll
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\LinqKit.dll
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\HtmlAgilityPack.dll
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\SampleApplication.Data.EntityFramework.pdb
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\SampleApplication.Domain.pdb
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\SampleApplication.Service.pdb
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Antlr3.Runtime.pdb
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Common.Logging.pdb
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Common.Logging.xml
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Common.Logging.Core.pdb
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Common.Logging.Core.xml
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Microsoft.Owin.xml
@@ -129,6 +137,8 @@ C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Micros
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Microsoft.Practices.Unity.Configuration.xml
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Newtonsoft.Json.xml
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Quartz.pdb
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\Quartz.xml
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\System.Net.Http.Formatting.xml
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\System.Web.Helpers.xml
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\System.Web.Http.xml
@@ -141,6 +151,8 @@ C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\System
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\System.Web.WebPages.Razor.xml
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\System.Web.Optimization.xml
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\EntityFramework.xml
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\HtmlAgilityPack.pdb
+C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\bin\HtmlAgilityPack.xml
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\obj\Debug\SampleApplication.Web.csprojResolveAssemblyReference.cache
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\obj\Debug\SampleApplication.Web.dll
 C:\Users\ASK\Documents\GitHub\SampleApplication\SampleApplication.Web\obj\Debug\SampleApplication.Web.pdb

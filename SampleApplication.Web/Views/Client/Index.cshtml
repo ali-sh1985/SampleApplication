@@ -6,7 +6,7 @@
         <h4 class="modal-title">Confirm</h4>
     </div>
     <div class="modal-body">
-       <strong>Delete this item: </strong> {{client.name}}
+        <strong>Delete this item: </strong> {{client.name}}
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary" ng-click="ok()">OK</button>
@@ -63,7 +63,8 @@
                         <div class="form-group">
                             <label for="inputDisplayCurrency" class="col-lg-2 control-label">Display Currency:</label>
                             <div class="col-lg-2">
-                                <select class="form-control input-sm" id="inputDisplayCurrency" ng-options="currency for currency in currencies" ng-model="filter.inputCurrency"></select>
+                                @Html.DropDownList("Currency", EnumHelper.GetSelectList(typeof(SampleApplication.Domain.Enums.Currency)), new { ng_model = "filter.inputCurrency", @class = "form-control input-sm" })
+                                @*<select class="form-control input-sm" id="inputDisplayCurrency" ng-options="currency for currency in currencies" ng-model="filter.inputCurrency"></select>*@
                             </div>
                         </div>
 
@@ -77,23 +78,42 @@
                 </form>
             </div>
         </div>
-        <table st-table="clientCollection" class="table table-striped">
+        <div class="btn-group pull-right" style="margin-bottom: 11px;" dropdown>
+            <button type="button" class="btn btn-primary">Page Size: {{pageSize}}</button>
+            <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+                <span class="caret"></span>
+                <span class="sr-only"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a ng-click="changePageSize(5)">5</a></li>
+                <li><a ng-click="changePageSize(10)">10</a></li>
+                <li><a ng-click="changePageSize(25)">25</a></li>
+                <li><a ng-click="changePageSize(50)">50</a></li>
+                <li><a ng-click="changePageSize(100)">100</a></li>
+            </ul>
+        </div>
+        <table st-table="clientCollection" class="table table-striped table-condensed table-bordered" st-pipe="filterClients">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Total invoiced</th>
-                    <th>Total paid</th>
-                    <th>Balance</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th class="col-sm-4" st-sort="Name">Name</th>
+                    <th class="col-sm-2">Total invoiced</th>
+                    <th class="col-sm-2">Total paid</th>
+                    <th class="col-sm-2">Balance</th>
+                    <th class="col-sm-1">Edit</th>
+                    <th class="col-sm-1">Delete</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody ng-show="isLoading">
+                <tr>
+                    <td colspan="6" class="text-center"><i class="fa fa-refresh fa-spin fa-2x fa-fw"></i></td>
+                </tr>
+            </tbody>
+            <tbody ng-show="!isLoading">
                 <tr ng-repeat="row in clientCollection">
                     <td><a id="clientBtn" href="#/clients/detail/{{row.clientId}}">{{row.name}}</a></td>
-                    <td>{{row.totalInvoiced}}</td>
-                    <td>{{row.totalPaid}}</td>
-                    <td>{{row.balance }}</td>
+                    <td>{{row.currencySymbol}} {{row.totalInvoiced | number}}</td>
+                    <td>{{row.currencySymbol}} {{row.totalPaid | number}}</td>
+                    <td>{{row.currencySymbol}} {{row.balance | number}}</td>
                     <td>
                         <a href="#/clients/edit/{{row.clientId}}" class="btn btn-sm btn-warning">
                             <i class="glyphicon glyphicon-edit"></i>
@@ -106,10 +126,17 @@
                     </td>
                 </tr>
             </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6" class="text-center">
+                                <pagination total-items="totalItems" ng-model="currentPage" max-size="5" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="pageSize" ng-change="filterClients()"></pagination>
+                    </td>
+                </tr>
+            </tfoot>
         </table>
         <div class="form-group pull-right">
             <div class="col-lg-10">
-                <a href="#/clients/create" class="btn btn-primary" ng-click="searchClient()">Add New</a>
+                <a href="#/clients/create" class="btn btn-primary">Add New</a>
             </div>
         </div>
     </div>

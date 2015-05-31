@@ -16,6 +16,12 @@ namespace SampleApplication.Data.EntityFramework.Repositories
         {
         }
 
+        public void Remove(int invoiceId)
+        {
+            var invoice = Set.Find(invoiceId);
+            Remove(invoice);
+        }
+
         public List<Invoice> GetInvoiceListByClient(int clientId)
         {
             return Set.Where(i => i.ClientId == clientId).ToList();

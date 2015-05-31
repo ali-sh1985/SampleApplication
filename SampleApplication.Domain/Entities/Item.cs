@@ -14,5 +14,6 @@ namespace SampleApplication.Domain.Entities
         public int Tax { get; set; }
         public int InvoiceId { get; set; }
         public virtual Invoice Invoice { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

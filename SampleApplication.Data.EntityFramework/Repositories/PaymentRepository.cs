@@ -18,8 +18,8 @@ namespace SampleApplication.Data.EntityFramework.Repositories
 
         public void Remove(int paymentId)
         {
-            var client = Set.Find(paymentId);
-            Remove(client);
+            var payment = Set.Find(paymentId);
+            Remove(payment);
         }
 
         public List<Payment> GetPaymentListByClient(int clientId)

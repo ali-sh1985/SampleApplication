@@ -17,7 +17,7 @@ namespace SampleApplication.Service.Services
     {
         void Remove(int paymentId);
         List<Payment> GetPaymentListByClient(int clientId);
-        List<Payment> Search(PaymentSearchCriteria searchCriteria, Paging paging, Sort sorting);
+        PagedList<Payment> Search(PaymentSearchCriteria searchCriteria, Paging paging, Sort sorting);
     }
     public class PaymentService : Service<Payment>, IPaymentService
     {
@@ -66,11 +66,26 @@ namespace SampleApplication.Service.Services
             return _unitOfWork.PaymentRepository.GetPaymentListByClient(clientId);
         }
 
-        public List<Payment> Search(PaymentSearchCriteria searchCriteria, Paging paging, Sort sorting)
+        public PagedList<Payment> Search(PaymentSearchCriteria searchCriteria, Paging paging, Sort sorting)
         {
             var predicate = PredicateBuilder.True<Payment>();
-            var orderBy = sorting == null ? null : sorting.GetOrderBy<Payment>();
-            return _unitOfWork.PaymentRepository.GetAll(predicate, orderBy, paging.PageSize * paging.PageIndex, paging.PageSize);
+            if (searchCriteria.ClientId.HasValue)
+            {
+                predicate = predicate.And(x => x.Invoice.Client.ClientId == searchCriteria.ClientId.Value);
+            }
+            if (sorting == null)
+            {
+                sorting = new Sort("PaymentId");
+            }
+            if (String.IsNullOrWhiteSpace(sorting.ColumnName))
+            {
+                sorting = new Sort("PaymentId", sorting.ColumnOrder == Order.Ascending ? "ASC" : "DESC");
+            }
+
+            var orderBy = sorting.GetOrderBy<Payment>();
+
+            var result = _unitOfWork.PaymentRepository.GetAll(predicate, orderBy, paging.PageSize * paging.PageIndex, paging.PageSize);
+            return new PagedList<Payment>(result, paging.PageIndex, paging.PageSize, _unitOfWork.PaymentRepository.GetAll(predicate, null, 0, int.MaxValue).Count);
         }
     }
 

@@ -100,7 +100,11 @@
                 TotalPaidTo: filter.inputTotalPaidTo,
                 BalanceFrom: filter.inputBalanceFrom,
                 BalanceTo: filter.inputBalanceTo,
-                DisplayCurrency: filter.inputCurrency
+                DisplayCurrency: filter.inputCurrency,
+                PageSize: filter.pageSize,
+                PageNumber: filter.pageNumber,
+                SortColumn: filter.sortColumn,
+                Order: filter.order,
             }).success(function (data, status, headers, config) {
                 deferred.resolve(data);
             }).error(function (data, status, headers, config) {
@@ -111,7 +115,9 @@
 
         this.removeClient = function (clientId) {
             var deferred = $q.defer();
-            $http.post('/Client/Delete', { id: clientId })
+            $http.post('/Client/Delete', {
+                id: clientId
+            })
                 .success(function (data, status, headers, config) {
                     deferred.resolve(data);
                 }).error(function (data, status, headers, config) {
@@ -152,7 +158,9 @@
         }
         this.validateInvoice = function (invoiceId) {
             var deferred = $q.defer();
-            $http.post('Invoice/Validate', { id: invoiceId })
+            $http.post('Invoice/Validate', {
+                id: invoiceId
+            })
                 .success(function (data, status, headers, config) {
                     deferred.resolve(data);
                 }).error(function (data, status, headers, config) {
@@ -161,14 +169,14 @@
             return deferred.promise;
         }
 
-        this.addinvoice = function(invoice) {
+        this.addinvoice = function (invoice) {
             var deferred = $q.defer();
             $http.post('Invoice/CreateEdit', {
                 InvoiceId: null,
                 Date: invoice.Date,
                 ClientId: invoice.ClientId,
                 ItemList: invoice.ItemList
-                })
+            })
                 .success(function (data, status, headers, config) {
                     deferred.resolve(data);
                 }).error(function (data, status, headers, config) {
@@ -177,7 +185,7 @@
             return deferred.promise;
         }
 
-        this.editinvoice = function (invoice) {
+        this.editInvoice = function (invoice) {
             var deferred = $q.defer();
             $http.post('Invoice/CreateEdit', {
                 InvoiceId: invoice.InvoiceId,
@@ -190,6 +198,42 @@
                 }).error(function (data, status, headers, config) {
                     deferred.reject();
                 });
+            return deferred.promise;
+        }
+
+        this.removeInvoice = function (invoiceId) {
+            var deferred = $q.defer();
+            $http.post('Invoice/Delete', {
+                id: invoiceId
+            })
+                .success(function (data, status, headers, config) {
+                    deferred.resolve(data);
+                }).error(function (data, status, headers, config) {
+                    deferred.reject();
+                });
+
+            return deferred.promise;
+        }
+
+        this.filterInvoices = function (filter) {
+            var deferred = $q.defer();
+            $http.post('/Invoice/List', {
+                Find: filter.inputFind,
+                InvoiceId: filter.inputInvoice,
+                ClientId: filter.inputClientId,
+                TotalFrom: filter.inputTotalFrom,
+                TotalTo: filter.inputTotalTo,
+                NetFrom: filter.inputNetFrom,
+                NetTo: filter.inputNetTo,
+                PageSize: filter.pageSize,
+                PageNumber: filter.pageNumber,
+                SortColumn: filter.sortColumn,
+                Order: filter.order
+            }).success(function (data, status, headers, config) {
+                deferred.resolve(data);
+            }).error(function (data, status, headers, config) {
+                deferred.reject();
+            });
             return deferred.promise;
         }
 
@@ -242,9 +286,27 @@
             return deferred.promise;
         }
 
+        this.filterPayments = function (filter) {
+            var deferred = $q.defer();
+            $http.post('/Payment/List', {
+                ClientId: filter.inputClientId,
+                PageSize: filter.pageSize,
+                PageNumber: filter.pageNumber,
+                SortColumn: filter.sortColumn,
+                Order: filter.order
+            }).success(function (data, status, headers, config) {
+                deferred.resolve(data);
+            }).error(function (data, status, headers, config) {
+                deferred.reject();
+            });
+            return deferred.promise;
+        }
+
         this.removePayment = function (paymentId) {
             var deferred = $q.defer();
-            $http.post('Payment/Delete', { id: paymentId })
+            $http.post('Payment/Delete', {
+                id: paymentId
+            })
                 .success(function (data, status, headers, config) {
                     deferred.resolve(data);
                 }).error(function (data, status, headers, config) {
@@ -254,4 +316,38 @@
             return deferred.promise;
         }
 
+    })
+    .service('chartService', function ($http, $q) {
+        this.getPaymentData = function (type) {
+            var deferred = $q.defer();
+            $http.get('Report/GetReport?metric=payment&type=' + type).success(function (data, status, headers, config) {
+                deferred.resolve(data);
+            }).error(function (data, status, headers, config) {
+                deferred.reject();
+            });
+
+            return deferred.promise;
+        }
+
+        this.getInvoiceData = function (type) {
+            var deferred = $q.defer();
+            $http.post('Report/GetReport?metric=invoice&type=' + type).success(function (data, status, headers, config) {
+                deferred.resolve(data);
+            }).error(function (data, status, headers, config) {
+                deferred.reject();
+            });
+
+            return deferred.promise;
+        }
+    })
+    .factory('Page', function () {
+        var title = 'default';
+        return {
+            title: function () {
+                return title;
+            },
+            setTitle: function (newTitle) {
+                title = newTitle;
+            }
+        };
     });

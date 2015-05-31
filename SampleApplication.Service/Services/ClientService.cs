@@ -19,7 +19,7 @@ namespace SampleApplication.Service.Services
         decimal GetBalance(int clientId);
         decimal GetTotalInvoices(int clientId);
         decimal GetTotalPayments(int clientId);
-        List<Client> Search(ClientSearchCriteria searchCriteria, Paging paging, Sort sorting);
+        PagedList<Client> Search(ClientSearchCriteria searchCriteria, Paging paging, Sort sorting);
     }
     public class ClientService : Service<Client>, IClientService
     {
@@ -56,8 +56,8 @@ namespace SampleApplication.Service.Services
             return _unitOfWork.ClientRepository.GetAll();
         }
 
-        public List<Client> Search(ClientSearchCriteria searchCriteria, Paging paging, Sort sorting)
-        {
+        public PagedList<Client> Search(ClientSearchCriteria searchCriteria, Paging paging, Sort sorting)
+       {
             var predicate = PredicateBuilder.True<Client>();
 
             if (!string.IsNullOrWhiteSpace(searchCriteria.Find))
@@ -90,7 +90,7 @@ namespace SampleApplication.Service.Services
                 predicate = predicate.And(x => x.InvoiceList.Sum(i => i.PaymentList.Sum(p => p.Total)) >= searchCriteria.PaymentFrom);
             }
 
-            if (searchCriteria.PaymentFrom.HasValue)
+            if (searchCriteria.PaymentTo.HasValue)
             {
                 predicate = predicate.And(x => x.InvoiceList.Sum(i => i.PaymentList.Sum(p => p.Total)) <= searchCriteria.PaymentTo);
             }
@@ -106,8 +106,8 @@ namespace SampleApplication.Service.Services
             }
 
             var orderBy = sorting.GetOrderBy<Client>();
-
-            return _unitOfWork.ClientRepository.GetAll(predicate, orderBy, paging.PageSize * paging.PageIndex, paging.PageSize);
+            var result = _unitOfWork.ClientRepository.GetAll(predicate, orderBy, paging.PageSize * paging.PageIndex, paging.PageSize);
+            return new PagedList<Client>(result, paging.PageIndex, paging.PageSize, _unitOfWork.ClientRepository.GetAll(predicate, null, 0, int.MaxValue).Count);
         }
 
         public void Remove(int clientId)

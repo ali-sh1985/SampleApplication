@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using SampleApplication.Web.Scheduler;
 
 namespace SampleApplication.Web
 {
@@ -21,6 +23,7 @@ namespace SampleApplication.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             UnityConfig.RegisterComponents();
+            EmailScheduler.Start();
         }
     }
 }

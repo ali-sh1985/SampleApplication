@@ -33,6 +33,8 @@ namespace SampleApplication.Data.EntityFramework.Configuration
                 .HasColumnType("int")
                 .IsRequired();
 
+            Ignore(x => x.IsDeleted);
+
             HasRequired(x => x.Invoice)
                 .WithMany(x => x.ItemList)
                 .HasForeignKey(x => x.InvoiceId);

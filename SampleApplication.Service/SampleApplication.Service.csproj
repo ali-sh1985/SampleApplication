@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,8 +52,10 @@
     <Compile Include="SearchCriterias\PaymentSearchCriteria.cs" />
     <Compile Include="SearchCriterias\InvoiceSearchCriteria.cs" />
     <Compile Include="Services\ClientService.cs" />
+    <Compile Include="Services\CurrencyService .cs" />
     <Compile Include="Services\PaymentService.cs" />
     <Compile Include="Services\InvoiceService.cs" />
+    <Compile Include="Services\ReportService.cs" />
     <Compile Include="Services\Service.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,7 +68,9 @@
       <Name>SampleApplication.Domain</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

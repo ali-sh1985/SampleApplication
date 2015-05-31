@@ -6,11 +6,15 @@ using System.Web.Mvc;
 using SampleApplication.Domain;
 using SampleApplication.Domain.Entities;
 using SampleApplication.Domain.Repositories;
+using SampleApplication.Service.Common;
+using SampleApplication.Service.SearchCriterias;
 using SampleApplication.Service.Services;
+using SampleApplication.Web.Common;
 using SampleApplication.Web.Models;
 
 namespace SampleApplication.Web.Controllers
 {
+    [System.Web.Mvc.Authorize]
     public class PaymentController : Controller
     {
         private readonly IPaymentService _paymentService;
@@ -59,6 +63,36 @@ namespace SampleApplication.Web.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
+        public JsonResult List(PaymentFilterViewModel filter)
+        {
+
+            var paymentSearchCriteria = new PaymentSearchCriteria()
+            {
+                ClientId = filter.ClientId
+            };
+            var result = _paymentService.Search(paymentSearchCriteria, new Paging(filter.PageNumber, filter.PageSize), new Sort(filter.SortColumn, filter.Order));
+
+            return Json(new
+            {
+                TotalPages = result.TotalPageCount,
+                TotalItems = result.TotalCount,
+                PageNumber = result.PageIndex + 1,
+                Data = result.Select(p => new
+                {
+                    PaymentId = p.PaymentId,
+                    InvoiceId = p.Invoice.InvoiceId,
+                    ClientName = p.Invoice.Client.Name,
+                    ClientId = p.Invoice.Client.ClientId,
+                    Date = p.PaymentDate,
+                    Total = p.Total,
+                    Method = p.Method,
+                    Description = p.Description,
+                    CurrencySymbol = Helpers.GetCurrencySymbol("GBP")
+                })
+            }, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult Create()
         {
 
